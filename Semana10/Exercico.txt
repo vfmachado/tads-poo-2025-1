@@ -1,0 +1,51 @@
+O EXERCICIO É UM JOGO DE PASSAR DE FASE EM QUE CADA AUMENTA A QUANTIDADE DE INIMIGOS E A VELOCIDADE DO PERSONAGEM E DOS INIMIGOS.
+O JOGADOR E O OBJETIVO COMEÇAM EM POSICOES DIFERENTES E O JOGADOR TEM QUE CHEGAR NO OBJETIVO
+SE ENCONSTAR NUM INIMIGO É GAME OVER
+
+O USUARIO CONTROLA O PERSOANGEM PRINCIPAL
+OS INIMIGOS SE MOVIMENTAM DE MANEIRA ALEATORIA
+
+            +-------------------+
+            |   <<interface>>   |
+            |    Controlavel    |
+            +-------------------+
+            | + mover(direcao)  |
+            +-------------------+
+                    ▲
+                    |
+         +----------------------+
+         |     Personagem       |   <abstract>
+         +----------------------+
+         | - posicao: Ponto     |    Ponto é outra classe
+         | - velocidade         |
+         +----------------------+
+         | + atualizar()        |
+         | + mover(direcao)     |
+         +----------------------+
+                    ▲
+          ┌─────────┴────────────┐
+          |                      |
+  +------------------+   +-------------------+
+  |     Jogador      |   |     Inimigo       |
+  +------------------+   +-------------------+
+  | + mover()        |   | + moverAleatorio()|
+  +------------------+   +-------------------+
+
++-----------------------+
+|       Objetivo        |
++-----------------------+
+| - posicao: Ponto      |
++-----------------------+
+
++---------------------------+
+|          Fase             |
+|        (extends JPanel)   |
++---------------------------+
+| - jogador: Jogador        |
+| - inimigos: List<Inimigo> |
+| - objetivo: Objetivo      |
++---------------------------+
+| + iniciar()               |
+| + paintComponent(Graphics)|
+| + verificarColisoes()     |
++---------------------------+
