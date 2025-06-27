@@ -12,6 +12,8 @@ public class Tela extends JPanel implements KeyListener, Runnable {
     private int x = 100;
     private int y = 100;
     private int velocidade = 5;
+    private boolean cima = false;
+    private boolean baixo = false;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -23,10 +25,18 @@ public class Tela extends JPanel implements KeyListener, Runnable {
         // try {
         //     Thread.sleep(16);
         // } catch (Exception e) { }
-        x = x + velocidade;
+        // x = x + velocidade;
         
-        if (x >= 780 || x < 0) {
-            velocidade = -velocidade;
+        // if (x >= 780 || x < 0) {
+        //     velocidade = -velocidade;
+        // }
+
+        if (cima) {
+            y = y - velocidade;
+        }
+
+        if (baixo) {
+            y = y + velocidade;
         }
         
         // this.repaint();
@@ -38,12 +48,22 @@ public class Tela extends JPanel implements KeyListener, Runnable {
     @Override
     public void keyPressed(KeyEvent e) {
         System.out.println(e.getKeyChar() + " foi pressionada");
-        // if (e.getKeyChar() == 'w')
+        if (e.getKeyChar() == 'w')
+            cima = true; 
+            // y = y - velocidade;
+
+        if (e.getKeyChar() == 's')
+            baixo = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         System.out.println(e.getKeyChar() + " foi solta");
+        if (e.getKeyChar() == 'w')
+            cima = false;
+
+        if (e.getKeyChar() == 's')
+            baixo = false;
     }
 
     @Override
